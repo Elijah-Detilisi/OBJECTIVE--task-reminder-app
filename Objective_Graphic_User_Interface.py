@@ -331,7 +331,7 @@ class Task_Entry_Window(Toplevel_Window_Husk):
 		self.task_description_text.configure(font =('arial', 10, 'italic'))
 		
 		#config text
-		self.set_widget_text('Insert goal title here...', 'Insert goal title here...',\
+		self.set_widget_text('Insert goal title here...', 'Insert goal description here...',\
 							machine_clock.get_date(), machine_clock.get_time())
 		
 		#config button graphics
