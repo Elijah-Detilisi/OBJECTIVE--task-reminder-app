@@ -1,13 +1,8 @@
-_**Dependincies**_
+_**Dependincies**_<br />
+-tkinter (for desktop GUI).<br />
+-PIL and numpy (both for image file handling).<br />
+-pyttsx3 (for text to speech).<br />
+-webbrowser (hyper link handling).<br />
 
-tkinter (for desktop GUI)
-
-PIL and numpy (both for image file handling).
-
-pyttsx3 (for text to speech).
-
-webbrowser (hyper link handling).
-
-_**Instructions**_
-
-Execute the Objective_Run.py file to run the software.
+_**Instructions**_<br />
+-Execute the Objective_Run.py file to run the software.<br />
