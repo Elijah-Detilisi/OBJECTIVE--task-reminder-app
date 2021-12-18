@@ -713,7 +713,7 @@ class About_Window(Toplevel_Window_Husk):
 		self.hypertext_link.place(relx=0.03, rely=0.87, relwidth = 0.4, relheight = 0.1)
 
 	def hypertext_link_action(self, event):
-		website_link = "https://hashnode.com/@ElijahDetilisi"
+		website_link = "https://hashnode.com/post/objective-task-reminder-software-ckxc1prlh00au1ts1fd4x1llh"
 		try:
 			webbrowser.open_new(website_link)
 		except Exception as ex:
