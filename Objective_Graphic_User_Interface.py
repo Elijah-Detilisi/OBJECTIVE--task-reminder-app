@@ -984,6 +984,3 @@ class Objective_App_Window(tk.Tk):
 
 #****************End class*****************#
 
-if __name__ == '__main__':
-	window = Objective_App_Window()
-	window.launch_window()
