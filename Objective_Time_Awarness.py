@@ -66,22 +66,29 @@ class Clock:
 		self.current_time = datetime.datetime.now()
 
 	def get_date(self):
+		self.current_time = datetime.datetime.now()
 		day = self.current_time.strftime("%d")
 		month = self.current_time.strftime("%B")
 		year = self.current_time.strftime("%Y")
+		
 		return (day, month, year)
 
 	def get_day_of_week(self):
+		self.current_time = datetime.datetime.now()
 		day_of_Week = self.current_time.strftime("%A")
+
 		return day_of_Week
 
 	def get_time(self):
+		self.current_time = datetime.datetime.now()
+
 		hour = int(self.current_time.strftime("%H"))
 		minute = self.current_time.strftime("%M")
 		meridiem = self.current_time.strftime("%p")
 		return (hour, minute, meridiem)
 
 	def get_time_of_day(self):
+		self.current_time = datetime.datetime.now()
 		hour = int(self.current_time.strftime("%H"))
 		time_of_day = ""
 
@@ -95,7 +102,9 @@ class Clock:
 		return time_of_day
 
 	def convert_string_date_2_numeric_date(self, param_string_date):
+		self.current_time = datetime.datetime.now()
 		num_month = 0
+
 		try:
 			num_month = self.current_time.strptime(param_string_date[1], "%B").month
 		except:
@@ -104,7 +113,9 @@ class Clock:
 		return(int(param_string_date[0]), num_month, int(param_string_date[2]))
 
 	def check_lateness(self, param_date):
+		self.current_time = datetime.datetime.now()
 		is_late = (False, param_date)
+
 		#year late
 		if(self.current_time.year > param_date[2]):
 			is_late = (True, 'Overdue')
