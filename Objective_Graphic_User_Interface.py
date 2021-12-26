@@ -331,7 +331,7 @@ class Task_Entry_Window(Toplevel_Window_Husk):
 		self.task_description_text.configure(font =('arial', 10, 'italic'))
 		
 		#config text
-		self.set_widget_text('Insert goal title here...', 'Insert goal description here...',\
+		self.set_widget_text('Insert goal title here...', 'Insert goal title here...',\
 							machine_clock.get_date(), machine_clock.get_time())
 		
 		#config button graphics
@@ -813,6 +813,8 @@ class Objective_App_Window(tk.Tk):
 		self.today_time_label = tk.Label(self.datetime_label_frame, bg = self.frame_color2)
 		self.today_date_label = tk.Label(self.datetime_label_frame, bg = self.frame_color2)
 
+		self.day_time_label = tk.Label(self.frame2, bg = self.frame_color2)
+
 		#frame 3 wigets
 		self.all_task_label_frames = []
 		self.quote_display_text = tk.Text(self.frame3, bg = self.frame_color3, bd = 0)
@@ -868,6 +870,18 @@ class Objective_App_Window(tk.Tk):
 		self.today_time_label.configure(text = f"{time_text[0]}:{time_text[1]} {time_text[2]}")
 		self.today_date_label.configure(text = date_text)
 
+		#config image display
+		time_of_day = self.machine_clock.get_time_of_day()
+		sun_display = r'\sunrise.png'
+
+		if(time_of_day == 'Afternoon'):
+			sun_display = r'\sunny.png'
+		elif(time_of_day == 'Evening'):
+			sun_display = r'\sleeping.png'
+
+		day_time_picture = graphics_toolkit.icons_folder_path + sun_display
+		graphics_toolkit.superimpose_image_to_Widget(self.day_time_label, day_time_picture, (100, 100))
+
 	def prepare_frame3_widgets(self):
 		#config text
 		self.quote_display_text.configure(font =('Calibri', 11, 'italic', 'bold'))
@@ -899,6 +913,7 @@ class Objective_App_Window(tk.Tk):
 		self.datetime_label_frame.place(relx=0.02, rely=0.03, relwidth = 0.97, relheight = 0.3)
 		self.today_time_label.place(relx=0.1, rely=0.1, relwidth = 0.85, relheight = 0.45)
 		self.today_date_label.place(relx=0.1, rely=0.65, relwidth = 0.85, relheight = 0.25)
+		self.day_time_label.place(relx=0.1, rely=0.5, relwidth = 0.85, relheight = 0.25)
 		
 		#for frame 3
 		self.quote_display_text.place(relx=0.01, rely=0.83, relwidth = 0.65, relheight = 0.16)
@@ -969,3 +984,6 @@ class Objective_App_Window(tk.Tk):
 
 #****************End class*****************#
 
+if __name__ == '__main__':
+	window = Objective_App_Window()
+	window.launch_window()
