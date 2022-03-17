@@ -148,16 +148,3 @@ def superimpose_image_to_Widget(widget, image_file_name, dimensions):
 #****************End Function Definition*****************#
 
 
-
-
-#----------------Begin Function Definition---------------#
-def create_tool_tip(window, param_widget, tip_info):
-	'''
-    Description
-    -----------
-        This functions Bind the tooltip to the paramitrized widget.
-    '''
-	tip= Balloon(window)
-	tip.bind_widget(param_widget, balloonmsg= str(tip_info))
-
-#****************End Function Definition*****************#
