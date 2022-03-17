@@ -82,7 +82,7 @@ class Clock:
 	def get_time(self):
 		self.current_time = datetime.datetime.now()
 
-		hour = int(self.current_time.strftime("%H"))
+		hour = int(self.current_time.strftime("%I"))
 		minute = self.current_time.strftime("%M")
 		meridiem = self.current_time.strftime("%p")
 		return (hour, minute, meridiem)
@@ -108,7 +108,7 @@ class Clock:
 		try:
 			num_month = self.current_time.strptime(param_string_date[1], "%B").month
 		except:
-			num_month = self.current_time.strptime(param_string_date[1], "%B").month
+			num_month = self.current_time.strptime(param_string_date[1], "%b").month
 
 		return(int(param_string_date[0]), num_month, int(param_string_date[2]))
 
