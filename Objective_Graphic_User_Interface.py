@@ -271,7 +271,7 @@ class Task_Entry_Window(Toplevel_Window_Husk):
 		self.setup_master_window('Task Entry', 500, 500)
 
 		#supporting fields
-		self.MONTHS = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"] 
+		self.MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] 
 		self.DAYS = ['{}'.format(i) for i in range(1, 32)]
 		self.YEARS = ['{}'.format(j) for j in range(2021, 2031)]
 
@@ -331,7 +331,7 @@ class Task_Entry_Window(Toplevel_Window_Husk):
 		self.task_description_text.configure(font =('arial', 10, 'italic'))
 		
 		#config text
-		self.set_widget_text('Insert goal title here...', 'Insert goal title here...',\
+		self.set_widget_text('Insert goal title here...', 'Insert goal description here...',\
 							machine_clock.get_date(), machine_clock.get_time())
 		
 		#config button graphics
@@ -621,8 +621,8 @@ class Profile_Editor_Window(Toplevel_Window_Husk):
 		new_profile_data = (self.profile_name_entry.get(), self.profile_title_entry.get())
 		self.profile_table.insert_new_profile_entry(new_profile_data)
 		try:
-			graphics_toolkit.save_image(self.profile_picture)
 			self.master_window.prepare_frame1_widgets()
+			graphics_toolkit.save_image(self.profile_picture)
 		except Exception as ex:
 			print(ex)
 		self.destroy()
@@ -789,12 +789,12 @@ class Objective_App_Window(tk.Tk):
 		self.profile_table = Profile_table()
 		self.machine_voice = Text_To_Speech()
 		self.machine_clock = Clock()
+		self.profile_info = ""
 		try:
-			self.profile_info = self.profile_table.get_profile()[0]
+			self.profile_table.get_profile()[0]
 		except:
 			new_profile = ('User', 'New')
 			self.profile_table.insert_new_profile_entry(new_profile)
-			self.profile_info = self.profile_table.get_profile()[0]
 
 		self.random_quote = random.choice(Quotes_table().get_all_quotes())
 		
@@ -812,7 +812,6 @@ class Objective_App_Window(tk.Tk):
 		self.datetime_label_frame = tk.LabelFrame(self.frame2, bg = self.frame_color2)
 		self.today_time_label = tk.Label(self.datetime_label_frame, bg = self.frame_color2)
 		self.today_date_label = tk.Label(self.datetime_label_frame, bg = self.frame_color2)
-
 		self.day_time_label = tk.Label(self.frame2, bg = self.frame_color2)
 
 		#frame 3 wigets
@@ -840,6 +839,8 @@ class Objective_App_Window(tk.Tk):
 		#config profile name label
 		self.profile_name_label.configure(fg = '#36454F')
 		self.profile_name_label.configure(font =('Verdana', 20, 'bold'))
+
+		self.profile_info = self.profile_table.get_profile()[0]
 		self.profile_name_label.configure(text = self.profile_info[0])
 
 		#config edit button
@@ -869,7 +870,6 @@ class Objective_App_Window(tk.Tk):
 		#config text
 		self.today_time_label.configure(text = f"{time_text[0]}:{time_text[1]} {time_text[2]}")
 		self.today_date_label.configure(text = date_text)
-
 		#config image display
 		time_of_day = self.machine_clock.get_time_of_day()
 		sun_display = r'\sunrise.png'
@@ -978,9 +978,15 @@ class Objective_App_Window(tk.Tk):
 
 	def launch_window(self):
 		self.initialize_window()
-		self.machine_voice.articulate_breifing(self.machine_clock, self.profile_info, self.activites_table.get_all_goals(), self.random_quote)
 		self.update_datetime_display()
+		self.machine_voice.articulate_breifing(self.machine_clock, self.profile_info, self.activites_table.get_all_goals(), self.random_quote)
 		self.mainloop()
 
 #****************End class*****************#
 
+
+
+#--------------------------Execute------------------------#
+if __name__ == '__main__':
+	window = Objective_App_Window()
+	window.launch_window()
