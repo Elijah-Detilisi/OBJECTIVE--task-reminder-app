@@ -199,6 +199,7 @@ class Toplevel_Window_Husk(tk.Toplevel, ABC):
 		self.resizable(False, False)
 		self.grab_set()
 		self.transient()
+		
 		#display window in the middle of the screen
 		screen_width = self.winfo_screenwidth()
 		screen_height = self.winfo_screenheight()
